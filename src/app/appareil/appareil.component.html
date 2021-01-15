@@ -1,0 +1,10 @@
+<li [ngClass]="{'list-group-item': true,
+'list-group-item-success': appareilStatus === 'allumé',
+'list-group-item-danger': appareilStatus === 'éteint'}"> <!--ngClass  prend un objet clé-valeur, mais cette fois avec la classe à appliquer en clé, et la condition en valeur-->
+    
+    <div style="width:20px;height:20px;background-color:red;" 
+       *ngIf="appareilStatus === 'éteint'"></div>
+       
+    <h4 [ngStyle]="{color: getColor()}">Appareil : {{ appareilName }} -- Statut : {{ getStatus() }}</h4>
+    <input type="text" class="form-control" [(ngModel)]="appareilName">
+ </li>
