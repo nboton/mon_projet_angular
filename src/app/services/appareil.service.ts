@@ -1,20 +1,23 @@
 
 export class AppareilService {
     
-    appareils = [
-      {
-        name: 'Machine à laver',
-        status: 'éteint'
-      },
-      {
-        name: 'Frigo',
-        status: 'allumé'
-      },
-      {
-        name: 'Ordinateur',
-        status: 'éteint'
-      }
-    ];
+  appareils = [
+    {
+      id: 1,
+      name: 'Machine à laver',
+      status: 'éteint'
+    },
+    {
+      id: 2,
+      name: 'Frigo',
+      status: 'allumé'
+    },
+    {
+      id: 3,
+      name: 'Ordinateur',
+      status: 'éteint'
+    }
+];
 
 
     switchOnAll() {
@@ -36,5 +39,18 @@ export class AppareilService {
   switchOffOne(i: number) {
       this.appareils[i].status = 'éteint';
   }
-  }
+/**
+ * 
+ * @param id méthode qui rendra l'appareil correspondant à un identifiant :
+ */
+  getAppareilById(id: number):any {
+    const appareil = this.appareils.find(
+      (s) => {
+        return s.id === id;
+      }
+    );
+    return appareil;
+}
+  
+}
   

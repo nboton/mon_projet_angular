@@ -8,21 +8,43 @@ import { MonPremierComponent } from './mon-premier/mon-premier.component';
 import { AppareilComponent } from './appareil/appareil.component';
 
 import { AppareilService } from './services/appareil.service';
+import { AuthService } from './services/auth.service';
+import { AuthComponent } from './auth/auth.component';
+import { AppareilViewComponent } from './appareil-view/appareil-view.component';
+
+import { Routes,RouterModule } from '@angular/router';
+import { SingleAppareilComponent } from './single-appareil/single-appareil.component';
+import { ForOhForComponent } from './for-oh-for/for-oh-for.component';
+
+const appRoutes: Routes = [
+  { path: 'appareils', component: AppareilViewComponent },
+  { path: 'appareils/:id', component: SingleAppareilComponent },
+  { path: 'auth', component: AuthComponent },
+  { path: '', component: AppareilViewComponent },
+  { path: 'not-found', component: ForOhForComponent },
+  { path: '**', redirectTo: 'not-found' }
+];
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MonPremierComponent,
-    AppareilComponent
+    AppareilComponent,
+    AuthComponent,
+    AppareilViewComponent,
+    SingleAppareilComponent,
+    ForOhForComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    AppareilService
+    AppareilService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

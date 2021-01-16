@@ -11,6 +11,7 @@ export class AppareilComponent implements OnInit {
   @Input() appareilName: string;
   @Input() appareilStatus: string;
   @Input() indexOfAppareil: number;
+  @Input() id: number;
   appareils:any [];
 
   constructor(private appareilService: AppareilService) { 
@@ -18,6 +19,7 @@ export class AppareilComponent implements OnInit {
   this.appareilName="";
   this.appareilStatus="";
   this.indexOfAppareil=0;
+  this.id=1;
   
 
 
