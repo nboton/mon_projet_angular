@@ -3,6 +3,7 @@ import { AppareilService } from './services/appareil.service';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/observable/interval';
+import { User } from './models/User.model';
 
 @Component({
   selector: 'app-root',//Nom de la balise à uttiliser pour afficher le component app.component.html. Ce nom doit être uniq

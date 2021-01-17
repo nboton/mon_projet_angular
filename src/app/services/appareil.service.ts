@@ -20,6 +20,7 @@ export class AppareilService {
 ];
 
 
+
     switchOnAll() {
         for(let appareil of this.appareils) {
           appareil.status = 'allumé';
