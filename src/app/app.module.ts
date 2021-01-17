@@ -16,10 +16,12 @@ import { AppareilViewComponent } from './appareil-view/appareil-view.component';
 import { Routes,RouterModule } from '@angular/router';
 import { SingleAppareilComponent } from './single-appareil/single-appareil.component';
 import { ForOhForComponent } from './for-oh-for/for-oh-for.component';
+import { EditAppareilComponent } from './edit-appareil/edit-appareil.component';
 
 const appRoutes: Routes = [
   { path: 'appareils', canActivate: [AuthGuard], component: AppareilViewComponent },
   { path: 'appareils/:id', canActivate: [AuthGuard], component: SingleAppareilComponent },
+  { path: 'edit', canActivate: [AuthGuard], component: EditAppareilComponent },
   { path: 'appareils', component: AppareilViewComponent },
   { path: 'appareils/:id', component: SingleAppareilComponent },
   { path: 'auth', component: AuthComponent },
@@ -37,7 +39,8 @@ const appRoutes: Routes = [
     AuthComponent,
     AppareilViewComponent,
     SingleAppareilComponent,
-    ForOhForComponent
+    ForOhForComponent,
+    EditAppareilComponent
   ],
   imports: [
     BrowserModule,
