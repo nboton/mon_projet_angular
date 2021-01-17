@@ -9,6 +9,7 @@ import { AppareilComponent } from './appareil/appareil.component';
 
 import { AppareilService } from './services/appareil.service';
 import { AuthService } from './services/auth.service';
+import { AuthGuard } from './services/auth-guard.service';
 import { AuthComponent } from './auth/auth.component';
 import { AppareilViewComponent } from './appareil-view/appareil-view.component';
 
@@ -17,6 +18,8 @@ import { SingleAppareilComponent } from './single-appareil/single-appareil.compo
 import { ForOhForComponent } from './for-oh-for/for-oh-for.component';
 
 const appRoutes: Routes = [
+  { path: 'appareils', canActivate: [AuthGuard], component: AppareilViewComponent },
+  { path: 'appareils/:id', canActivate: [AuthGuard], component: SingleAppareilComponent },
   { path: 'appareils', component: AppareilViewComponent },
   { path: 'appareils/:id', component: SingleAppareilComponent },
   { path: 'auth', component: AuthComponent },
@@ -44,7 +47,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     AppareilService,
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
