@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class AppareilService {
     
   appareils = [
@@ -19,7 +22,7 @@ export class AppareilService {
     }
 ];
 
-
+  constructor(private httpClient: HttpClient) { }
 
     switchOnAll() {
         for(let appareil of this.appareils) {
@@ -68,6 +71,34 @@ addAppareil(name: string, status: string) {
   emitAppareilSubject() {
     throw new Error("Method not implemented.");
   }
+
+  saveAppareilsToServer() {
+    this.httpClient
+      .put('https://http-client-demo-aa73b-default-rtdb.firebaseio.com/appareils.json', this.appareils)
+      .subscribe(
+        () => {
+          console.log('Enregistrement terminé !');
+        },
+        (error) => {
+          console.log('Erreur ! : ' + error);
+        }
+      );
+  }
+
+  getAppareilsFromServer() {
+    this.httpClient
+    .get<any[]>('https://http-client-demo-aa73b-default-rtdb.firebaseio.com/appareils.json')
+    .subscribe(
+      (response) => {
+        this.appareils = response;
+        this.emitAppareilSubject();
+      },
+      (error) => {
+        console.log('Erreur ! : ' + error);
+      }
+    );
+   
+}
   
 }
   

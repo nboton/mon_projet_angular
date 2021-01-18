@@ -52,6 +52,7 @@ onSwitch() {
     this.appareilService.switchOnOne(this.indexOfAppareil);
   }
 }
-  
+
+
 
 }
